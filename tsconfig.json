@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/node20/tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "build"
+  },
+  "files": ["global.d.ts"],
+  "include": ["src/**/*", "global.d.ts"],
+  "exclude": ["node_modules", "build"]
+}
