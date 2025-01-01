@@ -7,7 +7,8 @@
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
     "lint": "biome check src",
-    "format": "biome check --write src"
+    "format": "biome check --write src",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -25,8 +26,23 @@
     "@tsconfig/node20": "^20.1.4",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
+  },
+"lint-staged": {
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+      "biome check --files-ignore-unknown=true",
+      "biome check --write --no-errors-on-unmatched",
+      "biome check --write --organize-imports-enabled=false --no-errors-on-unmatched",
+      "biome check --write --unsafe --no-errors-on-unmatched",
+      "biome format --write --no-errors-on-unmatched",
+      "biome lint --write --no-errors-on-unmatched"
+    ],
+    "*": [
+      "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
+    ]
   }
 }
