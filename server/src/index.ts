@@ -1,6 +1,6 @@
 import express from 'express';
-
-const PORT = process.env.PORT || 3000;
+import { ENV, connectDB } from './config';
+import logger from './config/logger';
 
 const app = express();
 
@@ -10,6 +10,16 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+const startServer = async () => {
+  try {
+    logger.info('Starting server...');
+    await connectDB();
+    app.listen(ENV.PORT, () => {
+      logger.info(`Server running on port ${ENV.PORT}`);
+    });
+  } catch (error) {
+    logger.error('Failed to start server', error);
+  }
+}
+
+startServer();
