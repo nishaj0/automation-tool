@@ -1,10 +1,17 @@
 import express from "express";
 import { ENV, connectDB } from "./config";
 import logger from "./config/logger";
+import { errorResponse, successResponse } from "./middlewares/responseHandler";
 
 const app = express();
 
 app.use(express.json());
+app.use(successResponse);
+
+// ROUTES
+
+
+app.use(errorResponse);
 
 const startServer = async () => {
   try {
