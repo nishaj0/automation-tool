@@ -1,7 +1,6 @@
 import { Schema, model } from "mongoose";
 
 interface User {
-  name: string;
   username: string;
   email: string;
   password: string;
@@ -12,7 +11,6 @@ interface User {
 
 const userSchema = new Schema<User>(
   {
-    name: { type: String, required: true },
     username: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
@@ -20,7 +18,7 @@ const userSchema = new Schema<User>(
       type: String,
       default: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
     },
-    role: { type: String, required: true },
+    role: { type: String, required: true, enum: ["admin", "user"], default: "user" },
   },
   {
     timestamps: true,
