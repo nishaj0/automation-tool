@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const requiredEnvVars = ["MONGO_URI"];
+const requiredEnvVars = ["MONGO_URI", "ACCESS_TOKEN_SECRET", "REFRESH_TOKEN_SECRET"];
 
 // check for missing environment variables
 for (const key of requiredEnvVars) {
@@ -12,7 +12,9 @@ for (const key of requiredEnvVars) {
 }
 
 const ENV = {
-  MONGO_URI: process.env.MONGO_URI || "",
+  MONGO_URI: process.env.MONGO_URI as string,
+  ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET as string,
+  REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET as string,
   PORT: process.env.PORT || 3000,
   ENVIRONMENT: process.env.NODE_ENV || "development",
 };

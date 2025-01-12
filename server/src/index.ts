@@ -1,17 +1,20 @@
 import express from "express";
-import { ENV, connectDB } from "./config";
-import logger from "./config/logger";
-import { errorResponse, successResponse } from "./middlewares/responseHandler";
+import { ENV, connectDB, logger } from "./config";
+import { responseHandler } from "./middlewares";
+import { authRoutes } from "./routes";
 
 const app = express();
 
+// middlewares
 app.use(express.json());
-app.use(successResponse);
+app.use(responseHandler.successResponse);
 
-// ROUTES
+// routes
+const API_PREFIX = "/api/v1";
+app.use(`${API_PREFIX}/auth`, authRoutes);
 
-
-app.use(errorResponse);
+// error handling
+app.use(responseHandler.errorResponse);
 
 const startServer = async () => {
   try {
