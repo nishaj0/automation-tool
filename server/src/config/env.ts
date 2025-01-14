@@ -16,7 +16,7 @@ const ENV = {
   ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET as string,
   REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET as string,
   PORT: process.env.PORT || 3000,
-  ENVIRONMENT: process.env.NODE_ENV || "development",
+  ENVIRONMENT: process.env.NODE_ENV || "DEV",
 };
 
 export default ENV;

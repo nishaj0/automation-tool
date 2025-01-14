@@ -38,7 +38,7 @@ const handleRegister = async (req: Request, res: Response, next: NextFunction) =
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       sameSite: "none",
-      secure: ENV.ENVIRONMENT === "production",
+      secure: ENV.ENVIRONMENT === "PROD",
     });
     
     const { password: _, ...basicUserData } = user.toObject()
@@ -78,7 +78,7 @@ const handleLogin = async (req: Request, res: Response, next: NextFunction) => {
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       sameSite: "none",
-      secure: ENV.ENVIRONMENT === "production",
+      secure: ENV.ENVIRONMENT === "PROD",
     });
 
     // user data without password
