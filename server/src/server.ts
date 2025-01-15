@@ -1,8 +1,9 @@
-import express from "express";
 import cors from "cors";
+import express from "express";
 import { ENV, connectDB, logger } from "./config";
 import { responseHandler } from "./middlewares";
 import { authRoutes } from "./routes";
+import corsOptions from "./config/corsOption";
 
 const app = express();
 
