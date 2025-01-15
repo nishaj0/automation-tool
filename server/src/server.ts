@@ -1,11 +1,12 @@
 import express from "express";
+import cors from "cors";
 import { ENV, connectDB, logger } from "./config";
 import { responseHandler } from "./middlewares";
 import { authRoutes } from "./routes";
 
 const app = express();
 
-// middlewares
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(responseHandler.successResponse);
 
