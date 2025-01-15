@@ -1,5 +1,5 @@
-import { allowedOrigins } from "../constants";
 import type { CorsOptions } from "cors";
+import { allowedOrigins } from "../constants";
 
 const corsOptions: CorsOptions = {
   origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
