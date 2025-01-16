@@ -146,7 +146,7 @@ const handleLogout = async (req: Request, res: Response, next: NextFunction) => 
   } catch (error) {
     next(error);
   }
-}
+};
 
 export const authController = {
   handleRegister,

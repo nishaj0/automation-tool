@@ -3,11 +3,12 @@ import cors from "cors";
 import express from "express";
 import { ENV, connectDB, logger } from "./config";
 import corsOptions from "./config/corsOption";
-import { responseHandler } from "./middlewares";
+import { requestLogger, responseHandler } from "./middlewares";
 import { authRoutes } from "./routes";
 
 const app = express();
 
+app.use(requestLogger);
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
