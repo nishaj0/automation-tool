@@ -130,8 +130,27 @@ const handleRefresh = async (req: Request, res: Response, next: NextFunction) =>
   }
 };
 
+const handleLogout = async (req: Request, res: Response, next: NextFunction) => {
+  const refreshToken: string = req.cookies?.token;
+  if (!refreshToken) res.status(204).send();
+
+  try {
+    // clear cookie
+    res.clearCookie("token", {
+      httpOnly: true,
+      sameSite: "none",
+      secure: ENV.ENVIRONMENT === "PROD",
+    });
+
+    res.status(204).send();
+  } catch (error) {
+    next(error);
+  }
+}
+
 export const authController = {
   handleRegister,
   handleLogin,
   handleRefresh,
+  handleLogout,
 };
