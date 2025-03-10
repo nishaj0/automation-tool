@@ -8,7 +8,7 @@ const DiscordApp: App = {
   triggers: [newChannelMessage],
   actions: [sendMessage],
   start: async () => {
-    botStart();
+    await botStart();
   },
 };
 

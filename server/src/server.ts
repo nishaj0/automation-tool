@@ -1,6 +1,7 @@
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
+import { startAllApps } from "./app";
 import { ENV, connectDB, logger } from "./config";
 import corsOptions from "./config/corsOption";
 import { requestLogger, responseHandler } from "./middlewares";
@@ -26,6 +27,10 @@ const startServer = async () => {
   try {
     logger.info("Starting server...");
     await connectDB();
+
+    // start all apps
+    await startAllApps();
+
     app.listen(ENV.PORT, () => {
       logger.info(`Server running on port ${ENV.PORT}`);
     });
