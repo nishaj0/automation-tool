@@ -2,7 +2,15 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const requiredEnvVars = ["MONGO_URI", "ACCESS_TOKEN_SECRET", "REFRESH_TOKEN_SECRET", "CLIENT_URL", "DISCORD_BOT_TOKEN"];
+const requiredEnvVars = [
+  "MONGO_URI",
+  "ACCESS_TOKEN_SECRET",
+  "REFRESH_TOKEN_SECRET",
+  "CLIENT_URL",
+  "DISCORD_BOT_TOKEN",
+  "DISCORD_BOT_CLIENT_ID",
+  "DISCORD_BOT_TEST_GUILD_ID",
+];
 
 // check for missing environment variables
 for (const key of requiredEnvVars) {
@@ -19,6 +27,8 @@ const ENV = {
   PORT: process.env.PORT || 3000,
   ENVIRONMENT: process.env.NODE_ENV || "DEV",
   DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN as string,
+  DISCORD_BOT_CLIENT_ID: process.env.DISCORD_BOT_CLIENT_ID as string,
+  DISCORD_BOT_TEST_GUILD_ID: process.env.DISCORD_BOT_TEST_GUILD_ID as string,
 };
 
 export default ENV;

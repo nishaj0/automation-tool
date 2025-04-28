@@ -8,7 +8,8 @@
     "dev": "nodemon src/server.ts",
     "lint": "biome check src",
     "format": "biome check --write src",
-    "prepare": "husky"
+    "prepare": "husky",
+    "dev-discord-slash-commands": "ts-node src/app/discord/bot/deploy-commands.ts"
   },
   "keywords": [],
   "author": "",
